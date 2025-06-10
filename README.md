@@ -27,30 +27,28 @@
 
 ### 项目规划
 
-<html><head></head><body>
 
-周数 | 章节 | 预估 | 关键词 |  视频 |  负责人 | 进度
--- | -- | -- | -- | -- | -- | --
-1–2 | Ch 1: The Deep Learning Revolution | 2 周 | 应用案例、历史、模型选择 |   |   |  
-3–5 | Ch 2: Probabilities | 3 周 | 概率、贝叶斯、信息论 |   |   |  
-6–8 | Ch 3: Standard Distributions | 3 周 | 高斯、多元分布、核密度 |   |   |  
-9–12 | Ch 4: Regression | 4 周 | 最小二乘、正则化、偏差方差 |   | 何瑞杰  |  已完成
-13–16 | Ch 5: Classification | 4 周 | 判别函数、Logistic 回归 |   |   |  
-17–20 | Ch 6: Deep Neural Networks | 4 周 | 表示学习、Transfer Learning |   |   |  
-21–23 | Ch 7: Gradient Descent | 3 周 | 优化、SGD、Adam、初始化 |   |   |  
-24–26 | Ch 8: Backpropagation | 3 周 | 自动微分、Jacobian、Hessian |   |   |  
-27–29 | Ch 9: Regularization | 3 周 | Dropout、Early stopping、共享权重 |   |   |  
-30–33 | Ch 10: Convolutional Networks | 4 周 | CNN、分割、检测、可视化 |   |   |  
-34–36 | Ch 11: Structured Distributions | 3 周 | 图模型、Naive Bayes、D-separation |   |   |  
-37–40 | Ch 12: Transformers | 4 周 | Self-attention、编码器、语言模型 |   |   |  
-41–43 | Ch 13: Graph Neural Networks | 3 周 | GCN、图分类、平滑 |   |   |  
-44–46 | Ch 14: Sampling | 3 周 | MCMC、重要性采样、Gibbs |   |   |  
-47–50 | Ch 15: Discrete Latent Variables | 4 周 | K-Means、EM、混合模型 |   |   |  
-51–54 | Ch 16: Continuous Latent Variables | 4 周 | PCA、FA、ICA、Kalman |   |   |  
-55–56 | Ch 17: Generative Adversarial Networks | 2 周 | GAN 原理、训练技巧 |   |   |  
-57–58 | Ch 18: Normalizing Flows | 2 周 | ODE Flow、Autoregressive Flow |   |   |  
-59–60 | Ch 19: Autoencoders | 2 周 | VAE、Denoising、稀疏编码 |   |   |  
-61–64 | Ch 20: Diffusion Models | 4 周 | Score Matching、Guidance |   |   |  
-65–66 | Appendix: A–C 附录 | 2 周 | 线性代数、变分法、拉格朗日乘子 |   |   |  
 
-</body></html>
+| 周数    | 章节                                     | 预估  | 视频  | 负责人  | 进度   |
+| ----- | -------------------------------------- | --- | --- | ---- | ---- |
+| 1–2   | Ch 1: The Deep Learning Revolution     | 2 周 |     |      |      |
+| 3–5   | Ch 2: Probabilities                    | 3 周 |     |      |      |
+| 6–8   | Ch 3: Standard Distributions           | 3 周 |     |      |      |
+| 9–12  | Ch 4: Regression                       | 4 周 |     | 何瑞杰  |  已完成 |
+| 13–16 | Ch 5: Classification                   | 4 周 |     |      |      |
+| 17–20 | Ch 6: Deep Neural Networks             | 4 周 |     |      |      |
+| 21–23 | Ch 7: Gradient Descent                 | 3 周 |     |      |      |
+| 24–26 | Ch 8: Backpropagation                  | 3 周 |     |      |      |
+| 27–29 | Ch 9: Regularization                   | 3 周 |     |      |      |
+| 30–33 | Ch 10: Convolutional Networks          | 4 周 |     |      |      |
+| 34–36 | Ch 11: Structured Distributions        | 3 周 |     |      |      |
+| 37–40 | Ch 12: Transformers                    | 4 周 |     |      |      |
+| 41–43 | Ch 13: Graph Neural Networks           | 3 周 |     |      |      |
+| 44–46 | Ch 14: Sampling                        | 3 周 |     |      |      |
+| 47–50 | Ch 15: Discrete Latent Variables       | 4 周 |     |      |      |
+| 51–54 | Ch 16: Continuous Latent Variables     | 4 周 |     |      |      |
+| 55–56 | Ch 17: Generative Adversarial Networks | 2 周 |     |      |      |
+| 57–58 | Ch 18: Normalizing Flows               | 2 周 |     |      |      |
+| 59–60 | Ch 19: Autoencoders                    | 2 周 |     |      |      |
+| 61–64 | Ch 20: Diffusion Models                | 4 周 |     |      |      |
+| 65–66 | Appendix: A–C 附录                       | 2 周 |     |      |      |
