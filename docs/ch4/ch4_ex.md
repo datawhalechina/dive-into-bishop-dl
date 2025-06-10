@@ -223,7 +223,7 @@ $$
 接下来我们处理回归模型中标签分布假设是这个分布的情况。我们依然计算其对数似然函数：
 $$
 \begin{align*}
-\ln p(\boldsymbol{t}|\boldsymbol{X}, \boldsymbol{w}, \sigma^{2}) &= \sum\limits_{n=1}^{N} \ln \left[\frac{\color{blue} q}{{\color{blue} 2}(2\sigma^{2})^{1/q}{\color{blue} \Gamma(1/q)}} \exp\left\{  -\frac{|y(\boldsymbol{x}_{n}, \boldsymbol{w}) - t_{n}|^{q}}{2\sigma^{2}}  \right\}\right]\\
+\ln p(\boldsymbol{t}|\boldsymbol{X}, \boldsymbol{w}, \sigma^{2}) &= \sum\limits_{n=1}^{N} \ln \left[\frac{{\color{blue} q}}{ {\color{blue} 2}(2\sigma^{2})^{1/q}{\color{blue} \Gamma(1/q)}} \exp\left\{  -\frac{|y(\boldsymbol{x}_{n}, \boldsymbol{w}) - t_{n}|^{q}}{2\sigma^{2}}  \right\}\right]\\
 &= \sum\limits_{n=1}^{N} \left[ -\frac{1}{q}\ln (2\sigma^{2}) - \frac{|y(\boldsymbol{x}_{n}, \boldsymbol{w}) - t_{n}|^{q}}{2\sigma^{2}} + {\color{blue} C' }  \right]\\
 &= - \frac{N}{q} \ln(2\sigma^{2}) - \frac{1}{2\sigma^{2}}\underbrace{ \sum\limits_{n=1}^{N} |y(\boldsymbol{x}_{n}, \boldsymbol{w}) - t_{n}|^{q} }_{ L_{q} } + \text{const.}
 \end{align*}
