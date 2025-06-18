@@ -1,5 +1,5 @@
 
-![](cover.png)
+![](./docs/cover.png)
 
 # Bishop 《深度学习：基础与概念》讲解
 
