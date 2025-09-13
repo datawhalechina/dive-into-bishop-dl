@@ -42,7 +42,7 @@
 | 21–23 | Ch 7: Gradient Descent                 | 3 周 |     |     |   <font color="orange">未分配</font>|
 | 24–26 | Ch 8: Backpropagation                  | 3 周 |     |     |   <font color="orange">未分配</font>|
 | 27–29 | Ch 9: Regularization                   | 3 周 |     |     |   <font color="orange">未分配</font>|
-| 30–33 | Ch 10: Convolutional Networks          | 4 周 |     |黎又榛|   <font color="orange">进行中</font>|
+| 30–33 | Ch 10: Convolutional Networks          | 4 周 |     |黎又榛|   <font color="blue">进行中</font>|
 | 34–36 | Ch 11: Structured Distributions        | 3 周 |     |     |   <font color="orange">未分配</font>|
 | 37–40 | Ch 12: Transformers                    | 4 周 |     |     |   <font color="orange">未分配</font>|
 | 41–43 | Ch 13: Graph Neural Networks           | 3 周 |     |     |   <font color="orange">未分配</font>|
