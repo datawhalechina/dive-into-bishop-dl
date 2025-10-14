@@ -1,5 +1,5 @@
 # 第十章习题解答
-10.1(★) 考虑一个固定的权重向量 $w$ ，并证明在 $∥x∥^2$ 为常数的约束条件下，使标量积 $w^T x$ 达到最大值的输入向量 $x$ 可以表示为 $x=αw$ ，其中 $α$ 为某个标量。这可以通过使用拉格朗日乘数法最简便地完成。
+10.1(★)考虑一个固定的权重向量 $w$ ，并证明在 $∥x∥^2$ 为常数的约束条件下，使标量积 $w^T x$ 达到最大值的输入向量 $x$ 可以表示为 $x=αw$ ，其中 $α$ 为某个标量。这可以通过使用拉格朗日乘数法最简便地完成。
 
 令 $∥x∥^2=K$ ,则有 $∥x∥^2-K=0$ ，假设对这个式子乘以 $λ$ 常数加上目标函数 $w^T x$ 得到拉格朗日式子：
 
@@ -11,3 +11,18 @@ $$w^T x+λ(∥x∥^2-K)$$
 <p align="center">
 <img width="150" height="300" alt="image" src="https://github.com/user-attachments/assets/ba05d2b7-c299-49cb-8dee-64294b79ec16" />
 </p>
+
+10.3(★)明确计算以下 4×4 输入矩阵与 2×2 滤波器卷积的输出：
+<p align="center">
+<img width="500" height="243" alt="3ab75378-56c9-46fe-974d-6920086f7dc1" src="https://github.com/user-attachments/assets/a136331b-39ab-4aa5-a04c-5e45c339066c" />
+</p>
+
+<p align="center">
+<img width="300" height="300" alt="d4c5da04-c13c-498d-8572-17113a593511" src="https://github.com/user-attachments/assets/490959da-bf3f-4825-a3b1-b655262f342c" />
+</p>
+
+10.4(★★)如果图像 $I$ 有 $J \times K$ 个像素，滤波器 $K$ 有 $L \times M$ 个元素，请写出式 (10.2) 中两个求和的上下限。在数学文献中，运算式 (10.2) 被称为互相关，而卷积的定义则为
+
+
+
+
