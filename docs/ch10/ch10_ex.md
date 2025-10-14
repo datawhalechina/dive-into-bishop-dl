@@ -8,5 +8,6 @@ $$w^T x+λ(∥x∥^2-K)$$
 对以上这个式子针对 $x$ 求偏导，得到 $w+2λ x$ ,令其等于0，当 $x=-1/(2λ) w$ 时即 $x$ 与 $w$ 共线则有  $x=αw$ 成立。
 
 10.2(★★)考虑一个卷积网络层，其输入为一维数组，特征图也是一维的，如图所示。其中，输入数组的维度为 5，滤波器的宽度为 3，步长为 1。通过写出权重矩阵其中缺失的连接用零代替，共享参数用重复的元素表示，证明这可以表示为全连接层的一种特殊情况。忽略任何偏置参数。
-
-<img width="279" height="396" alt="image" src="https://github.com/user-attachments/assets/ba05d2b7-c299-49cb-8dee-64294b79ec16" />
+<p align="center">
+<img width="150" height="300" alt="image" src="https://github.com/user-attachments/assets/ba05d2b7-c299-49cb-8dee-64294b79ec16" />
+</p>
