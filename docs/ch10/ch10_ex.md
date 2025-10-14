@@ -41,9 +41,24 @@ $$
 F(x) = \int_{-\infty}^{\infty} G(y)k(x - y)dy
 $$
 
-其中 $k(x−y)$ 是核函数。通过考虑积分的离散近似，解释其与卷积神经网络中由10.4题中的公式①定义卷积层之间的关系。
+其中 $k(x−y)$ 是核函数。通过考虑积分的离散近似，解释其与卷积神经网络中由10.4题中的公式②定义卷积层之间的关系。
 
 10.6(★)考虑一张尺寸为 $J \times K$ 的图像，该图像在所有边框外填充了额外的 $P$ 个像素，然后使用一个尺寸为 $M×M$ 的卷积核进行卷积运算，其中M是奇数。证明如果我们选择 $P=(M−1)/2$ ，则生成的特征图将具有 $J×K$ 的尺寸，因此与原始图像的尺寸相同。
 
 10.7(★)证明当尺寸为 $M×M$ 的内核与具有深度 $P$ 填充和步长 $S$ 的 $J×K$ 图像进行卷积时，生成特征图的维度由以下公式给出：
 
+$$
+\left(
+\left\lfloor \frac{J + 2 \text{P} - \text{M}}{\text{S}} \right\rfloor + 1
+\right)
+\times
+\left(
+\left\lfloor \frac{K + 2 \text{P} - \text{M}}{\text{S}} \right\rfloor + 1
+\right)
+$$
+
+10.8(★★)对于图所示的VGG-16 CNN中的每个16层，评估包含偏置的权重（即连接）的数量和独立可学习的参数数量，确认网络中可学习的参数总数约为1.38亿。
+
+<p align="center">
+<img width="900" height="400" alt="image" src="https://github.com/user-attachments/assets/4bd8500a-3b5b-4ccd-b3b5-cf89a9aa23b4" />
+</p>
