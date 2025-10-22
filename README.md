@@ -40,7 +40,7 @@
 | 13–16 | Ch 5: Classification                   | 4 周 |     | 何瑞杰 |  <font color="blue">进行中</font> |
 | 17–20 | Ch 6: Deep Neural Networks             | 4 周 |     |     |   <font color="orange">未分配</font>|
 | 21–23 | Ch 7: Gradient Descent                 | 3 周 |     |     |   <font color="orange">未分配</font>|
-| 24–26 | Ch 8: Backpropagation                  | 3 周 |     |     |   <font color="orange">未分配</font>|
+| 24–26 | Ch 8: Backpropagation                  | 3 周 |     | 黎又榛 |   <font color="orange">进行中</font>|
 | 27–29 | Ch 9: Regularization                   | 3 周 |     |     |   <font color="orange">未分配</font>|
 | 30–33 | Ch 10: Convolutional Networks          | 4 周 |     |黎又榛|   <font color="blue">进行中</font>|
 | 34–36 | Ch 11: Structured Distributions        | 3 周 |     |     |   <font color="orange">未分配</font>|
@@ -60,7 +60,7 @@
 | 姓名 | 职责 | 简介 |
 | :----| :---- | :---- |
 | $何瑞杰$ | 项目负责人<br>第4,5章贡献者<br> | 香港科技大学 |
-| $黎又榛$ | 第10章贡献者 | Datawhale鲸英助教 |
+
 
 ## 参与贡献
 
