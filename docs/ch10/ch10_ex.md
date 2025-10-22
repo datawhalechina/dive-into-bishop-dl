@@ -124,30 +124,177 @@ $$
 
 并再次写下求和的限制。
 
-**证明** 这里假设处理的图像数据含有 $J \times K$ 个像素值，而卷积核中有 $L \times M$ 元素， 卷积核对于计算机存储读取数据的下标索引值是从0开始为了方便证明在之前的假设前提之下把公式②改为:
+#### 证明
+**相关说明**
 
-$$C(j,k)=\sum_{j=0}^{L-1}\sum_{m=0}^{K-1} I(j-l,k-m)k(l,m)③$$
+* 图像 $I$ 的尺寸为 $J\times K$（行数 $J$，列数 $K$）。索引采用零填充：行索引 $j=0,1,\dots,J-1$，列索引 $k=0,1,\dots,K-1$。  
+* 卷积核 $K$ 的尺寸为 $L\times M$。核索引也用零基：$\ell=0,1,\dots,L-1$，$m=0,1,\dots,M-1$。  
+* 为避免混淆，文中尽量不重用同一字母做不同含义，例如不要同时把 $j$ 用作图像坐标和求和索引。
+* 以下证明以padding=0为前提证明，其余padding≠0的情况同理。
 
-其中 $(j,k)$ 则表示图像数据经过卷积操作后得到特征图相应的二维位置，对于零填充即`padding=0`时的卷积而言其卷积核始终没有超过图像数据的大小，则有 $j∈[0,L-1]$ 以及 $k∈[0,K-1]$ ,而`padding≠0`时超过图像数据区域的像素值 $I(/dots,/dots)$ 均为0。
-
-令公式③中出现的 $l$ 满足 $l=L-1-l'$ ，$m$ 满足 $m=M-1-m'$ ，其分别表示当 $l$ 遍历到 $0,1,...,L-1$ 以及 $m$ 遍历到 $0,1,..,M-1$ 时 $l'$ 遍历到 $L-1,L-2,...,0$ 以及 $m'$ 遍历到 $M-1,m-2,...,0$ ,把 $l’$ 和 $m'$ 代入公式③得到公式④：
-
-$$
-C(j,k) = &\sum_{j=0}^{L-1} \sum_{k=0}^{K-1} I(j-(L-1-l'),k-(M-1-m'))K(L-1-l',M-1-m')
-       = &\sum_{j=0}^{L-1} \sum_{k=0}^{K-1} I(j-(L-1)+l'),k-(M-1)+m'))K(L-1-l',M-1-m')④
-$$
-
-其中设 $l'=u$ ， $m'=v$ ， 则有公式⑤：
+**互相关定义**
 
 $$
-K_{flip}(u,v)=K(L-1-u,M-1-m)⑥
+\text{corr}(j',k') = \sum_{u=0}^{L-1}\sum_{v=0}^{M-1} I(j'+u, k'+v) H(u,v)
 $$
 
-根据公式⑥以及公式⑤可以得到以下表达式：
+其中 $H$ 是要滑动的核未翻转。当不做填充valid时，$j'=0,\dots,J-L$ 且 $k'=0,\dots,K-M$。
+
+**卷积的数学定义（常见离散形式）**
 
 $$
-C(j,k) = \sum_{j=0}^{L-1} \sum_{k=0}^{K-1} I(j-(L-1)+u),k-(M-1)+v))K_{flip}(u,v)⑦
+C(j,k) = \sum_{\ell=0}^{L-1}\sum_{m=0}^{M-1} I(j-\ell, k-m) K(\ell,m)
 $$
+
+在 零填充为 0 的情况下（padding = 0）且取valid输出，为了使 $I(j-\ell,k-m)$ 在图像索引范围内必须满足：
+
+$$
+0 \le j-\ell \le J-1, \quad 0 \le k-m \le K-1.
+$$
+
+因此对给定 $(j,k)$，有效的 $(\ell,m)$ 范围为：
+
+$$
+\ell = \max(0, j-(J-1)), \dots, \min(L-1, j), \quad
+m = \max(0, k-(K-1)), \dots, \min(M-1, k).
+$$
+
+当我们固定只讨论输出的有效位置即核完全落在图像内时，$j=L-1,\dots,J-1$ 且 $k=M-1,\dots,K-1$，这使得上式中的求和可以直接写为 $\ell=0\dots L-1, m=0\dots M-1$，因为此时 $j-\ell$ 和 $k-m$ 总在图像内。
+
+
+**等价替换推导**
+
+从卷积定义出发：
+
+$$
+C(j,k) = \sum_{\ell=0}^{L-1}\sum_{m=0}^{M-1} I(j-\ell, k-m) K(\ell,m)
+$$
+
+做替换：
+
+$$
+\ell' = L-1-\ell, \qquad m' = M-1-m
+$$
+
+当 $\ell$ 从 $0$ 到 $L-1$ 时，$\ell'$ 从 $L-1$ 到 $0$ 但作为求和索引我们可把遍历顺序反过来，仍写成 $0..L-1$。类似地，$m'$ 也遍历 $0..M-1$。
+
+代入得到：
+
+$$
+\begin{aligned}
+C(j,k)
+&= \sum_{\ell'=0}^{L-1}\sum_{m'=0}^{M-1} I\big(j-(L-1-\ell'), k-(M-1-m')\big) K(L-1-\ell', M-1-m') \\
+&= \sum_{\ell'=0}^{L-1}\sum_{m'=0}^{M-1} I\big(j-L+1+\ell', k-M+1+m'\big) K(L-1-\ell', M-1-m').
+\end{aligned}
+$$
+
+令 $u=\ell', v=m'$ 并定义翻转核：
+
+$$
+K_{\text{flip}}(u,v) = K(L-1-u, M-1-v)
+$$
+
+则有：
+
+$$
+C(j,k)=\sum_{u=0}^{L-1}\sum_{v=0}^{M-1} I\big(j-L+1+u,\,k-M+1+v\big)\,K_{\mathrm{flip}}(u,v)
+$$
+
+(1)
+
+
+这是一个 互相关形式，但注意此处图像索引内项是 $I(j-L+1+u, k-M+1+v)$，并非直接 $I(j+u,k+v)$ —— 两者差了常数偏移 $-(L-1), -(M-1)$。
+
+如果我们把输出坐标重新命名为：
+
+$$
+j' = j-(L-1), \qquad k' = k-(M-1),
+$$
+
+（当 $j,k$ 取valid 输出位置时 $j'=0..J-L$ 与 $k'=0..K-M$），那么 (1) 可写作：
+
+$$
+C(j'+L-1, k'+M-1) = \sum_{u=0}^{L-1}\sum_{v=0}^{M-1} I(j'+u, k'+v) K_{\text{flip}}(u,v)
+$$
+
+把左边的坐标偏移掉（或把输出下标理解为 $j',k'$），我们就得到了与互相关形式数值上 **等价** 的表达。
+
+
+
+>关键结论：
+>卷积=对核翻转后的互相关；
+> 两者响应特征图的各数值相同，但要注意输出坐标与内项的偏移关系；
+> 在零基索引和valid输出下，卷积公式与 “互相关 + 翻转核” 在坐标上差了 $L-1$ 与 $M-1$ 的偏移。
+
+
+
+**Python 代码验证**
+
+```python
+import numpy as np
+
+# 示例输入图像（4x4）
+I = np.array([
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9,10,11,12],
+    [13,14,15,16]
+], dtype=float)
+
+# 卷积核（2x2）
+K = np.array([
+    [1, 2],
+    [3, 4]
+], dtype=float)
+
+J, K_img = I.shape
+L, M = K.shape
+
+# 按卷积定义valid，不填充
+C_conv = []
+for j in range(L-1, J):
+    row = []
+    for k in range(M-1, K_img):
+        s = 0.0
+        for ell in range(L):
+            for m in range(M):
+                s += I[j-ell, k-m] * K[ell, m]
+        row.append(s)
+    C_conv.append(row)
+C_conv = np.array(C_conv)
+
+# 翻转卷积核后做互相关
+K_flip = np.flip(np.flip(K, axis=0), axis=1)
+C_corr = []
+for jprime in range(J-L, -1, -1):
+    row = []
+    for kprime in range(K_img-M, -1, -1):
+        s = 0.0
+        for u in range(L):
+            for v in range(M):
+                s += I[jprime+u, kprime+v] * K_flip[u, v]
+        row.append(s)
+    C_corr.append(row)
+C_corr = np.array(C_corr)
+
+# 对互相关结果进行翻转，使之与卷积结果对齐
+C_corr_flip = np.flip(np.flip(C_corr, axis=0), axis=1)
+
+print("输入图像 I:\n", I)
+print("\n卷积核 K:\n", K)
+print("\n翻转后的卷积核 K_flip:\n", K_flip)
+print("\n卷积结果 C_conv ({}):\n".format(C_conv.shape), C_conv)
+print("\n互相关结果 C_corr ({}):\n".format(C_corr.shape), C_corr)
+print("\n互相关结果翻转后 C_corr_flip ({}):\n".format(C_corr_flip.shape), C_corr_flip)
+
+# 验证卷积与互相关翻转结果是否一致
+print("\n验证 C_conv 与 C_corr_flip 是否相同：", np.allclose(C_conv, C_corr_flip))
+
+```
+
+**注意**
+
+在深度学习库如 PyTorch、TensorFlow 中，Conv2d 接口的行为通常实现为 互相关 而非严格的数学卷积,若要获得数学卷积的效果，可手动翻转核或在理解上将kernel看作已经翻转过的形式,因此，在把理论公式转成代码时，理解 “核翻转” 与 “坐标偏移” 的关系非常重要。
 
 10.5(★)在数学中，连续变量 $x$ 的卷积定义为
 
